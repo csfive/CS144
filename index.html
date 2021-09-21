@@ -208,8 +208,13 @@
         prevTrack() {
             this.transitionName = "scale-in";
             this.isShowCover = true;
-            let index = parseInt(this.tracks.length * Math.random());
-            this.currentTrackIndex = index;
+//             let index = parseInt(this.tracks.length * Math.random());
+//             this.currentTrackIndex = index;
+            if (this.currentTrackIndex > 0) {
+                this.currentTrackIndex--;
+            } else {
+                this.currentTrackIndex = this.tracks.length - 1;
+            }
             this.currentTrack =
                 this.tracks[
                     this.currentTrackIndex
