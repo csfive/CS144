@@ -1,10 +1,6 @@
 # LIZHI
 
-南京市民电台
-
-安静听歌，乐队属实顶
-
-[在线听歌](https://codepen.io/Mancuoj/full/QWgxjrw)
+南京市民电台，随机播放，安静听歌。
 
 # 参考
 
