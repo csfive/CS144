@@ -2,15 +2,13 @@
 
 南京市民电台，随机播放，安静听歌。
 
-东拼西凑的代码，现学的打包，纯属自娱自乐。
+东拼西凑的代码，现学的打包，纯属自娱自乐，侵删。
 
 在线听：https://mancuoj.github.io/LIZHI/
 
 Github 不太行的时候，可以去 Codepen 听：https://codepen.io/Mancuoj/full/QWgxjrw
 
 Win 应用（便携版和安装版）：https://github.com/mancuoj/LIZHI/releases/tag/v1.0
-
-我也不知道 Electron 打包为啥能200多M，就这样吧，侵删。
 
 
 # 参考
