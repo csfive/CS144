@@ -21,11 +21,6 @@
                     </transition-group>
                 </div>
                 <div class="player-controls">
-                    <div class="player-controls__item -favorite" :class="{ active : currentTrack.favorited }" @click="favorite">
-                        <svg class="icon">
-                            <use xlink:href="#icon-heart-o"></use>
-                        </svg>
-                    </div>
                     <a :href="currentTrack.url" target="_blank" class="player-controls__item">
                         <svg class="icon">
                             <use xlink:href="#icon-link"></use>
@@ -145,6 +140,7 @@
                 this.isTimerPlaying = false;
             }
         },
+
         generateTime() {
             let width =
                 (100 / this.audio.duration) *
@@ -180,11 +176,11 @@
             this.currentTime =
                 curmin + ":" + cursec;
         },
+
         updateBar(x) {
             let progress = this.$refs.progress;
             let maxduration = this.audio.duration;
-            let position =
-                x - progress.offsetLeft;
+            let position = x - progress.offsetLeft;
             let percentage =
                 (100 * position) /
                 progress.offsetWidth;
@@ -200,20 +196,32 @@
                 (maxduration * percentage) / 100;
             this.audio.play();
         },
+
         clickProgress(e) {
             this.isTimerPlaying = true;
             this.audio.pause();
             this.updateBar(e.pageX);
         },
+        
         prevTrack() {
             this.transitionName = "scale-in";
             this.isShowCover = true;
-//             let index = parseInt(this.tracks.length * Math.random());
-//             this.currentTrackIndex = index;
             if (this.currentTrackIndex > 0) {
                 this.currentTrackIndex--;
             } else {
                 this.currentTrackIndex = this.tracks.length - 1;
+            }
+            this.currentTrack = this.tracks[this.currentTrackIndex];
+            this.resetPlayer();
+        },
+
+        nextTrack() {
+            this.transitionName = "scale-out";
+            this.isShowCover = true;
+            if (this.currentTrackIndex < this.tracks.length - 1) {
+                this.currentTrackIndex++;
+            } else {
+                this.currentTrackIndex = 1;
             }
             this.currentTrack =
                 this.tracks[
@@ -221,23 +229,12 @@
                 ];
             this.resetPlayer();
         },
-        nextTrack() {
-            this.transitionName = "scale-out";
-            this.isShowCover = true;
-            let index = parseInt(this.tracks.length * Math.random());
-            this.currentTrackIndex = index;
-            this.currentTrack =
-                this.tracks[
-                    this.currentTrackIndex
-                ];
-            this.resetPlayer();
-        },
+
         resetPlayer() {
             this.barWidth = 0;
             this.circleLeft = 0;
             this.audio.currentTime = 0;
-            this.audio.src =
-                this.currentTrack.url;
+            this.audio.src = this.currentTrack.url;
             setTimeout(() => {
                 if (this.isTimerPlaying) {
                     this.audio.play();
@@ -246,15 +243,8 @@
                 }
             }, 300);
         },
-        favorite() {
-            this.tracks[
-                this.currentTrackIndex
-            ].favorited =
-                !this.tracks[
-                    this.currentTrackIndex
-                ].favorited;
-        },
     },
+
     created() {
         let vm = this;
 
