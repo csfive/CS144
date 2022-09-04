@@ -1,4 +1,4 @@
-#【WIP】Sea Player
+# Sea Player
 
-A music player written in Vue2
+【WIP】A music player written in Vue2
 
